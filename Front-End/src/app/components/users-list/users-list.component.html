@@ -1,0 +1,42 @@
+  <div class="row">
+    <ngb-toast *ngIf="show && messageToUser" header="message to user" [autohide]="false" (hidden)="close()">
+      {{messageToUser}}
+    </ngb-toast>
+  </div>
+  <div class="row">
+    <h4>Users List</h4>
+      <div ngbAccordion>
+        <div ngbAccordionItem *ngFor="let user of users; let i = index">
+          <h2 ngbAccordionHeader>
+            <button ngbAccordionButton>{{user.username}}</button>
+          </h2>
+          <div ngbAccordionCollapse>
+            <div ngbAccordionBody>
+              <ng-template>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Name</th>
+                        <th>CreatedAt</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">{{i + 1}}</th>
+                        <td>{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.createdAt | date }}</td>
+                      </tr>
+                    </tbody>
+                </table>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
